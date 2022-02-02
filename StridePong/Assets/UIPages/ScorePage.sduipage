@@ -1,0 +1,54 @@
+!UIPageAsset
+Id: d103d983-3e75-4f4b-8165-1148c31ffce4
+SerializedVersion: {Stride: 2.1.0.1}
+Tags: []
+Design:
+    Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+Hierarchy:
+    RootParts:
+        - !Canvas ref!! 55cebd6e-9968-4f16-9eda-021ca9ae4e19
+    Parts:
+        -   UIElement: !TextBlock
+                Id: 52ac9858-96ae-4469-8be4-f96078bf0c95
+                DependencyProperties:
+                    1c841a4aecdebec1b161e927acdfd53f~Canvas.UseAbsolutePositionPropertyKey: false
+                    d561331c1f71fcdb8f1c8df8afbe9f4e~Canvas.RelativePositionPropertyKey: {X: 0.2, Y: 0.1, Z: 0.0}
+                    b5a289e6a2f3c53f87b091379f6e3ad5~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: ScoreLeft
+                Text: ScoreB
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 50.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !Canvas
+                Id: 55cebd6e-9968-4f16-9eda-021ca9ae4e19
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: RootCanvas
+                Children:
+                    638342ea59911b4063cba6ac1eb7d340: !TextBlock ref!! 52ac9858-96ae-4469-8be4-f96078bf0c95
+                    83666670ff912a5cfe2cd2084a28725c: !TextBlock ref!! d66bb05a-d7b2-4129-be16-6df13769ff57
+        -   UIElement: !TextBlock
+                Id: d66bb05a-d7b2-4129-be16-6df13769ff57
+                DependencyProperties:
+                    031d3882c621ddceb713870ce9e62311~Canvas.UseAbsolutePositionPropertyKey: false
+                    0f1eebfe68515cd852d0086f4e790fd6~Canvas.RelativePositionPropertyKey: {X: 0.8, Y: 0.1, Z: 0.0}
+                    76e38be2d272d450108a91436e265418~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: ScoreRight
+                Text: ScoreA
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 50.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}

@@ -1,0 +1,11 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 16
+VisualStudioVersion = 16.0.0.0
+MinimumVisualStudioVersion = 16.0.0.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StridePong.Windows", "StridePong.Windows\StridePong.Windows.csproj", "{77EAFD21-557D-438E-B20A-3E40EF94C14A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StridePong", "StridePong\StridePong.csproj", "{349E14F1-F5DE-4E00-9906-CB7ED56EA521}"
+EndProject
+Global
+EndGlobal

@@ -1,0 +1,37 @@
+!UIPageAsset
+Id: 9f7642af-2f1b-461e-bf72-2c654c1e0eb9
+SerializedVersion: {Stride: 2.1.0.1}
+Tags: []
+Design:
+    Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+Hierarchy:
+    RootParts:
+        - !Canvas ref!! 4ac9c8a9-d728-41ed-8fe7-f1b610d59c6c
+    Parts:
+        -   UIElement: !TextBlock
+                Id: 3b692d97-e8e0-45d9-b924-5c345e26117a
+                DependencyProperties:
+                    7b8143559b526df49e31ef0526bb223c~Canvas.UseAbsolutePositionPropertyKey: false
+                    b6da6109b10a45076327f6f13df00cec~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                    d0b9899800bdc67eee41199e3fbed51f~Canvas.RelativePositionPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: WinMessage
+                Text: Player X wins the game!
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 80.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !Canvas
+                Id: 4ac9c8a9-d728-41ed-8fe7-f1b610d59c6c
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: Root
+                Children:
+                    c639881dcdd4efbc570447248bfd0516: !TextBlock ref!! 3b692d97-e8e0-45d9-b924-5c345e26117a

@@ -1,0 +1,44 @@
+!PrefabAsset
+Id: efaa1ed5-256a-4b63-8e0c-f48bf1e84a70
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! 152432c6-6a2f-436f-9eb9-fbec4ff38f60
+    Parts:
+        -   Entity:
+                Id: 152432c6-6a2f-436f-9eb9-fbec4ff38f60
+                Name: Paddle
+                Components:
+                    12bf1729b8450e5a09a91e2aaeb34907: !TransformComponent
+                        Id: db828f89-b799-4a1b-b9fb-59737296e9f0
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 0.2, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    265e4867a83e15da474cb24d04c148f6: !ModelComponent
+                        Id: a92aa802-8ce4-49f9-a0bf-6149ecb38340
+                        Model: e3f6893b-2261-4d9c-99af-fc4b89432c4c:Cube
+                        Materials: {}
+                    0e3014f567535f8cdc587c63a9831ee1: !RigidbodyComponent
+                        Id: 915ead02-f48f-4508-96b5-ce608c29f650
+                        CanSleep: false
+                        Restitution: 1.0
+                        Friction: 0.0
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 2.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: true
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            dfa53e115bc4c87034691c5fec099af2: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}

@@ -1,0 +1,37 @@
+!UIPageAsset
+Id: ac8dc289-bdc1-4b70-a3b3-0b44825c74eb
+SerializedVersion: {Stride: 2.1.0.1}
+Tags: []
+Design:
+    Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+Hierarchy:
+    RootParts:
+        - !Canvas ref!! 4dd217c6-caa7-42d2-afba-7cc47a7409ee
+    Parts:
+        -   UIElement: !TextBlock
+                Id: 1c3934b6-9d34-4f26-b964-319b72ddadca
+                DependencyProperties:
+                    1ca5801780a700eaca745ac36a2e0dfd~Canvas.UseAbsolutePositionPropertyKey: false
+                    e251170a32e28a52e9d29460b8d36e8b~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                    c1852d65c332d24514f9fd879637d43d~Canvas.RelativePositionPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: Message
+                Text: GET READY!
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 80.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !Canvas
+                Id: 4dd217c6-caa7-42d2-afba-7cc47a7409ee
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: Root
+                Children:
+                    fcc72538b7793974c4494c860798a6bd: !TextBlock ref!! 1c3934b6-9d34-4f26-b964-319b72ddadca

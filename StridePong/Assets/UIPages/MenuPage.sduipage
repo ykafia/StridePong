@@ -1,0 +1,54 @@
+!UIPageAsset
+Id: 0b397af0-0a66-429d-909e-290237ef401f
+SerializedVersion: {Stride: 2.1.0.1}
+Tags: []
+Design:
+    Resolution: {X: 1280.0, Y: 720.0, Z: 1000.0}
+Hierarchy:
+    RootParts:
+        - !Canvas ref!! dc9a63d6-0a01-4bd1-a88f-bda8e27e27e6
+    Parts:
+        -   UIElement: !TextBlock
+                Id: 5c6f23f9-da58-4bb8-abcb-a9415d0dd889
+                DependencyProperties:
+                    7e7203acd721adbb49797a6af4cb4c7a~Canvas.UseAbsolutePositionPropertyKey: false
+                    d1b0737767effadc5dbc6e7861feef17~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                    bf4608c5bd6d69a13bf2f4cdd3392d18~Canvas.RelativePositionPropertyKey: {X: 0.5, Y: 0.2, Z: 0.0}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: Title
+                Text: STRIDE PONG
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 150.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !TextBlock
+                Id: 6bcdfd63-7f8b-4f3c-9a62-a62784e711de
+                DependencyProperties:
+                    6e730cc2e9125c5564c2c79186624f43~Canvas.UseAbsolutePositionPropertyKey: false
+                    b68467a0982d230ecb9c4778f0653525~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                    4357b97130dc1667474b453724248d32~Canvas.RelativePositionPropertyKey: {X: 0.5, Y: 0.6, Z: 0.0}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: PressText
+                Text: press space
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 50.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !Canvas
+                Id: dc9a63d6-0a01-4bd1-a88f-bda8e27e27e6
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: Root
+                Children:
+                    65cbde34eb85364ffb16c139ceb1b221: !TextBlock ref!! 5c6f23f9-da58-4bb8-abcb-a9415d0dd889
+                    79413cb2532b2f610e8d5d23f55ab3dd: !TextBlock ref!! 6bcdfd63-7f8b-4f3c-9a62-a62784e711de
