@@ -40,13 +40,11 @@ namespace StridePong
                 var collision = await body.NewCollision();
                 if(collision.ColliderA == TriggerRight || collision.ColliderB == TriggerRight)
                 {
-                    Entity.Transform.Position = new(0);
                     Entity.Get<InitialBallVelocity>().Start();
                     KeepingScore.PointTo.Broadcast(PlayerScore.OneToLeft);
                 } 
                 else if(collision.ColliderA == TriggerLeft || collision.ColliderB == TriggerLeft)
                 {
-                    Entity.Transform.Position = new(0);
                     Entity.Get<InitialBallVelocity>().Start();
                     KeepingScore.PointTo.Broadcast(PlayerScore.OneToRight);
                 }

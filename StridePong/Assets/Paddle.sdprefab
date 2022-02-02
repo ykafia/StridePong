@@ -42,3 +42,8 @@ Hierarchy:
                                 Size: {X: 1.0, Y: 1.0, Z: 1.0}
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                    f57a201962a0204000805361ceb0823f: !StridePong.MovePaddle,StridePong
+                        Id: 99f609d6-c1ce-4bc7-80a8-269f24112c1a
+                        Up: Up
+                        Down: Down
+                        Speed: 5.0

@@ -27,6 +27,7 @@ namespace StridePong
         public override void Start()
         {
             // Initialization of the script.
+            Entity.Transform.Position = new(0);
             Velocity = Vector3.UnitX * Speed * (rand.Next(0,2) * 2 -1);
         }
 

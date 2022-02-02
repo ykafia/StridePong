@@ -114,6 +114,11 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             ba7e12fd7d171ac0cdd1facf825159a9: ref!! bbfacc67-b560-46c4-979e-c188bdc766b0
+                    f57a201962a0204000805361ceb0823f: !StridePong.MovePaddle,StridePong
+                        Id: 8bd2010d-7930-44e5-8574-656cbee07078
+                        Up*: Z
+                        Down*: S
+                        Speed: 5.0
         -   Entity:
                 Id: 56df9bc4-4996-4219-81ed-fa64d5b9907f
                 Name: PaddleRight
@@ -125,6 +130,11 @@ Hierarchy:
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children:
                             c365f9e3b2563ab1e6380fcadd075bbd: ref!! d5bb59af-f5b0-4817-9d79-f25fcc4567c9
+                    f57a201962a0204000805361ceb0823f: !StridePong.MovePaddle,StridePong
+                        Id: c6868ecb-4fdc-4fc4-80e0-c80ee7f45bb6
+                        Up: Up
+                        Down: Down
+                        Speed: 5.0
         -   Folder: null
             Entity:
                 Id: 5b547456-1586-4c86-9fb8-ed1c0352a247
@@ -202,6 +212,14 @@ Hierarchy:
                             571b020e1b51dc1c024165d945d6e06b: !SphereColliderShapeDesc
                                 Is2D: false
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    60bade7a53f63ff0a2a72f0fe3e3d672: !StridePong.BallCollisionCheck,StridePong
+                        Id: 76440520-4d3e-4039-a124-186b4765917c
+                        TriggerLeft: ref!! b617ac57-97df-42b2-865a-797a7aea011a
+                        TriggerRight: ref!! 4fac6620-899f-484e-88b9-fad886b86392
+                        PaddleLeft: ref!! 50db6d98-ae3d-4bec-bbfc-fa3d68efae9d
+                        PaddleRight: ref!! 56df9bc4-4996-4219-81ed-fa64d5b9907f
+                        Top: ref!! 4a8edc80-9c8c-484d-b97c-b7b9f239646b
+                        Bottom: ref!! 13672a6b-0560-4b72-b07d-3fa1dd20d6b5
         -   Entity:
                 Id: 95d01dd6-0aa8-4dfe-aa6d-758b64ce2ad0
                 Name: Borders
