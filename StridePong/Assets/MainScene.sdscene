@@ -51,8 +51,6 @@ Hierarchy:
                         Id: fa4ca072-1ef7-4000-8c87-04f2453e28a1
                         PaddleRight: null
                         PaddleLeft: null
-                    8ebe68db5985487983747c73ec8c4779: !StridePong.PressStartEvent,StridePong
-                        Id: 5e91a0b8-7348-4f54-9034-05d04d34ee54
         -   Entity:
                 Id: cce42f89-8509-4693-954a-0039b061f5b0
                 Name: Skybox

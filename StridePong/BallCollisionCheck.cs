@@ -32,7 +32,8 @@ namespace StridePong
 
         public override async Task Execute()
         {
-            Entity.Add(new InitialBallVelocity());
+            Entity.GetOrCreate<InitialBallVelocity>().Start();      
+                  
             var body = Entity.Get<RigidbodyComponent>();
             while(Game.IsRunning)
             {
@@ -70,6 +71,8 @@ namespace StridePong
                 }
                 
             }
+            void StartMoving() => Entity.Get<InitialBallVelocity>().Start();
+
         }
     }
 }

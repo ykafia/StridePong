@@ -1,0 +1,339 @@
+!PrefabAsset
+Id: 395bd4c0-071e-497a-9b3c-fa394cf70ede
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! ec9290ae-3ea5-4104-87e2-262e6a2bda08
+        - ref!! 8624596d-e52b-4d14-a844-617cbb42822c
+        - ref!! 2cef5171-7597-4005-a81a-78d249d5e104
+        - ref!! 84e72245-f85a-4490-ac05-56ef63cccfb9
+        - ref!! 3c53a2d6-b9ae-4910-b48f-da68138845ef
+    Parts:
+        -   Entity:
+                Id: 2cef5171-7597-4005-a81a-78d249d5e104
+                Name: PaddleRight
+                Components:
+                    d3ad5459dce80afba41335e53c283f9a: !TransformComponent
+                        Id: 378554cf-f6b5-46c3-9b61-46d8bb637bd9
+                        Position: {X: 9.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            c365f9e3b2563ab1e6380fcadd075bbd: ref!! 1cfd9eb7-256c-422a-8e22-16a12aee0e35
+                    f57a201962a0204000805361ceb0823f: !StridePong.MovePaddle,StridePong
+                        Id: da4ccb86-7d14-45e9-91d0-b929ccd66c51
+                        Up: Up
+                        Down: Down
+                        Speed: 5.0
+        -   Folder: null
+            Entity:
+                Id: 377776d6-5fb7-4554-b7a8-b7ab094ba7b9
+                Name: Paddle
+                Components:
+                    12bf1729b8450e5a09a91e2aaeb34907: !TransformComponent
+                        Id: 1cfd9eb7-256c-422a-8e22-16a12aee0e35
+                        Position*: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 0.2, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    265e4867a83e15da474cb24d04c148f6: !ModelComponent
+                        Id: 42216ed7-0abe-483e-8c8a-519e78bd91df
+                        Model: e3f6893b-2261-4d9c-99af-fc4b89432c4c:Cube
+                        Materials: {}
+                    0e3014f567535f8cdc587c63a9831ee1: !RigidbodyComponent
+                        Id: 59d54e1b-0f7d-48c3-a6c6-6c91361c485f
+                        CanSleep: false
+                        Restitution: 1.0
+                        Friction: 0.0
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 2.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: true
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            dfa53e115bc4c87034691c5fec099af2: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: efaa1ed5-256a-4b63-8e0c-f48bf1e84a70:Paddle
+                BasePartId: 152432c6-6a2f-436f-9eb9-fbec4ff38f60
+                InstanceId: 3c427ee4-b916-48ec-97ee-135fcedca08e
+        -   Entity:
+                Id: 3c53a2d6-b9ae-4910-b48f-da68138845ef
+                Name: Sphere
+                Components:
+                    ea7e93834be3e0ae9887adf488b81aa9: !TransformComponent
+                        Id: f904ac14-bb0f-4cb2-8638-b744621fe348
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 0.2, Y: 0.2, Z: 0.2}
+                        Children: {}
+                    78d4cfe5463f14292ed87642ab8cbb77: !ModelComponent
+                        Id: ede66ce6-e4c2-4c9b-84fd-865d3c4a2df0
+                        Model: e2020903-3aa5-4b77-a3ad-e4c28dd33399:Sphere
+                        Materials: {}
+                    c2ca6cffa15fa232ddef084e7a25cab0: !RigidbodyComponent
+                        Id: 68ae2016-4b03-4e96-b857-5812c8c9c359
+                        CanSleep: false
+                        Restitution: 1.0
+                        Friction: 0.0
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: true
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            571b020e1b51dc1c024165d945d6e06b: !SphereColliderShapeDesc
+                                Is2D: false
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    60bade7a53f63ff0a2a72f0fe3e3d672: !StridePong.BallCollisionCheck,StridePong
+                        Id: 12d712c3-7626-499e-bc9f-b511bcad28a1
+                        TriggerRight: ref!! d1bb1f59-e83a-49eb-acf1-ec8a47adfb4e
+                        TriggerLeft: ref!! b3b47eae-085c-4871-888d-d5e7421b64a2
+                        PaddleLeft: ref!! 8624596d-e52b-4d14-a844-617cbb42822c
+                        PaddleRight: ref!! 2cef5171-7597-4005-a81a-78d249d5e104
+                        Top: ref!! cb3024f8-a9fa-40b0-bc71-4e4d21da94b1
+                        Bottom: ref!! e67efa54-5cc4-464e-9a6d-8fcc1e584b1d
+        -   Folder: null
+            Entity:
+                Id: 5c7fcd22-03e5-42d0-8118-15b24005c146
+                Name: Border
+                Components:
+                    778b8f7f61f3a56702170588e2a564e1: !TransformComponent
+                        Id: 881b19b3-5990-46eb-9fc3-acade36ffaa2
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d56274b3dfe13ff04117f71aa33ed3f: !StaticColliderComponent
+                        Id: b3b47eae-085c-4871-888d-d5e7421b64a2
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            badb37507f5b2f2851b990daaefe0ccb: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: be0b8248-2b6c-4f88-b413-bce2fb22c923:PointBorder
+                BasePartId: 08c04322-4d51-4b74-b5ae-51c14e46e325
+                InstanceId: 375ea1ec-c763-4d38-b4db-2fc903dc1105
+        -   Folder: null
+            Entity:
+                Id: 83e2182b-24d1-4555-8d93-36b8a98f1d1d
+                Name: Paddle
+                Components:
+                    12bf1729b8450e5a09a91e2aaeb34907: !TransformComponent
+                        Id: e2df0d63-6dbb-4c49-9d03-38d2e828f8ad
+                        Position*: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 0.2, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    265e4867a83e15da474cb24d04c148f6: !ModelComponent
+                        Id: 56526a13-05bc-4e45-a1eb-b68fd9f7a693
+                        Model: e3f6893b-2261-4d9c-99af-fc4b89432c4c:Cube
+                        Materials: {}
+                    0e3014f567535f8cdc587c63a9831ee1: !RigidbodyComponent
+                        Id: aa78bf2c-485a-447c-bc88-cfaca697148a
+                        CanSleep: false
+                        Restitution: 1.0
+                        Friction: 0.0
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: true
+                        Mass: 2.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: true
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            dfa53e115bc4c87034691c5fec099af2: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: efaa1ed5-256a-4b63-8e0c-f48bf1e84a70:Paddle
+                BasePartId: 152432c6-6a2f-436f-9eb9-fbec4ff38f60
+                InstanceId: 37ad6ca1-8deb-4193-b1bf-493d5acd3a74
+        -   Entity:
+                Id: 84e72245-f85a-4490-ac05-56ef63cccfb9
+                Name: Borders
+                Components:
+                    39e9440f744e1062528b1966e62ed00a: !TransformComponent
+                        Id: 9d4166c0-3076-4e61-be80-51a46a059a2e
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.70710677, Y: 0.0, Z: 0.0, W: 0.70710677}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            2e7e7326a74083ba76a035e50ba9f82a: ref!! 71642fbb-d10d-410b-98b3-d5bc4869f684
+                            e0de7728b58b62b744d19717aa2cf41f: ref!! f384ca79-93f2-4a1a-911b-f20a97d0b19a
+                            513891b12ef351644d4d61051e05def5: ref!! f5666ec4-ca01-4ca5-905b-2eac0a661a92
+                            f05b439b7135829ab168ef4dedd77a66: ref!! 2dea049c-679e-4c56-8d20-8912b12bd1e2
+        -   Entity:
+                Id: 8624596d-e52b-4d14-a844-617cbb42822c
+                Name: PaddleLeft
+                Components:
+                    44c7802d00f016d51e73f104cb97003e: !TransformComponent
+                        Id: e59b89b8-15a0-4ac0-942f-3ea09059c2c3
+                        Position: {X: -9.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            ba7e12fd7d171ac0cdd1facf825159a9: ref!! e2df0d63-6dbb-4c49-9d03-38d2e828f8ad
+                    f92bb237850ba8448121995e08512ac7: !StridePong.LeftPaddleAI,StridePong
+                        Id: f3c84dcf-8f4a-4fc2-9ab5-fc86936b1e39
+                        Ball: ref!! 3c53a2d6-b9ae-4910-b48f-da68138845ef
+                        Speed: 5.0
+        -   Folder: null
+            Entity:
+                Id: c575dd05-1363-4a72-8a01-16d710192dee
+                Name: PointBorderRight
+                Components:
+                    3397bbf81e7640c0daac98c02fb0b256: !TransformComponent
+                        Id: f5666ec4-ca01-4ca5-905b-2eac0a661a92
+                        Position: {X: -11.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 4.0, Z: 10.0}
+                        Children:
+                            f54d0f4fcf1800a62957b17a403dd33c: ref!! 881b19b3-5990-46eb-9fc3-acade36ffaa2
+        -   Folder: null
+            Entity:
+                Id: cb3024f8-a9fa-40b0-bc71-4e4d21da94b1
+                Name: Top
+                Components:
+                    1c2c46b20372fc7179d966e493289aa8: !TransformComponent
+                        Id: 71642fbb-d10d-410b-98b3-d5bc4869f684
+                        Position: {X: 0.0, Y: 0.0, Z: -5.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 30.0, Y: 1.0, Z: 0.4}
+                        Children: {}
+                    76012982583e209da3ec168880d9d702: !ModelComponent
+                        Id: 56f955ac-1c1d-438b-a363-aeb1e5df450f
+                        Model: e3f6893b-2261-4d9c-99af-fc4b89432c4c:Cube
+                        Materials: {}
+                    40c82f32b8e9f8039bd25513aa016d27: !StaticColliderComponent
+                        Id: d59e8ca2-0362-4eb6-88aa-f3a3d5fa9bbb
+                        CanSleep: false
+                        Restitution: 1.0
+                        Friction: 0.0
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            41858332c4780891c5e182f0214e1c1a: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: null
+            Entity:
+                Id: da83a815-f38c-49c4-a6e8-a9cb1306c0fc
+                Name: PointBorderLeft
+                Components:
+                    3397bbf81e7640c0daac98c02fb0b256: !TransformComponent
+                        Id: 2dea049c-679e-4c56-8d20-8912b12bd1e2
+                        Position: {X: 11.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 4.0, Z: 10.0}
+                        Children:
+                            f54d0f4fcf1800a62957b17a403dd33c: ref!! be903c2d-ed4e-447c-aaaa-4756590e6894
+        -   Folder: null
+            Entity:
+                Id: e4cae2ed-6dd2-45d7-8825-6d10c9fbf88a
+                Name: Border
+                Components:
+                    778b8f7f61f3a56702170588e2a564e1: !TransformComponent
+                        Id: be903c2d-ed4e-447c-aaaa-4756590e6894
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d56274b3dfe13ff04117f71aa33ed3f: !StaticColliderComponent
+                        Id: d1bb1f59-e83a-49eb-acf1-ec8a47adfb4e
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: true
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            badb37507f5b2f2851b990daaefe0ccb: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: be0b8248-2b6c-4f88-b413-bce2fb22c923:PointBorder
+                BasePartId: 08c04322-4d51-4b74-b5ae-51c14e46e325
+                InstanceId: 3265d47b-5fe3-4b80-98a5-02fe42d4591f
+        -   Folder: null
+            Entity:
+                Id: e67efa54-5cc4-464e-9a6d-8fcc1e584b1d
+                Name: Bottom
+                Components:
+                    1c2c46b20372fc7179d966e493289aa8: !TransformComponent
+                        Id: f384ca79-93f2-4a1a-911b-f20a97d0b19a
+                        Position: {X: 0.0, Y: 0.0, Z: 5.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 30.0, Y: 1.0, Z: 0.4}
+                        Children: {}
+                    76012982583e209da3ec168880d9d702: !ModelComponent
+                        Id: 59b7bda2-e2e5-49af-b723-5c170cf17fe4
+                        Model: e3f6893b-2261-4d9c-99af-fc4b89432c4c:Cube
+                        Materials: {}
+                    40c82f32b8e9f8039bd25513aa016d27: !StaticColliderComponent
+                        Id: c0a57511-b4d0-4ca0-a53e-cdd09d4d92db
+                        CanSleep: false
+                        Restitution: 1.0
+                        Friction: 0.0
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        AlwaysUpdateNaviMeshCache: false
+                        ColliderShapes:
+                            41858332c4780891c5e182f0214e1c1a: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: ec9290ae-3ea5-4104-87e2-262e6a2bda08
+                Name: MusicManager
+                Components:
+                    41b2ff6e4577ff98ab4bf0d919ae64b8: !TransformComponent
+                        Id: 997164cf-69b3-4c9b-a317-d610ff80fcdb
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}

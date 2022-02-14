@@ -3,7 +3,7 @@ Id: dafb8569-5bda-404a-8b67-51c05670bfcc
 SerializedVersion: {Stride: 2.0.0.0}
 Tags: []
 FontSource: !FileFontProvider
-    Source: !file C:/Users/kafia/Downloads/04B_03__.TTF
+    Source: !file ../Resources/04B_03__.TTF
 FontType: !SignedDistanceFieldSpriteFontType
     CharacterSet: null
     CharacterRegions: {}

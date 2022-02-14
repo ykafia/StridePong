@@ -64,7 +64,15 @@ namespace StridePong
                     scoreLeft = 0;
                     TRight.Text = scoreRight.ToString();
                     TLeft.Text = scoreLeft.ToString();
-                    
+                }
+
+                if(scoreLeft >= 3 || scoreRight >= 3 )
+                {
+                    UIManagerScript.ChangeUI.Broadcast(scoreLeft>=3?GameActions.EndGameLeft:GameActions.EndGameRight);
+                    scoreRight = 0;
+                    scoreLeft = 0;
+                    TRight.Text = scoreRight.ToString();
+                    TLeft.Text = scoreLeft.ToString();
                 }
             }
         }   

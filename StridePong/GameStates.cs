@@ -3,15 +3,18 @@ namespace StridePong
     public enum GameStates 
     {
         Menu,
-        Start,
+        Config,
         InGame,
-        Win
+        WinLeft,
+        WinRight
     }
     public enum GameActions 
     {
-        ShowStart,
-        StartGame,
-        EndGame,
+        ShowConfig,
+        StartGame2P,
+        StartGame1P,
+        EndGameLeft,
+        EndGameRight,
         BackToMenu
     }
     public enum Border

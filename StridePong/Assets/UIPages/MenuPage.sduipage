@@ -8,6 +8,63 @@ Hierarchy:
     RootParts:
         - !Canvas ref!! dc9a63d6-0a01-4bd1-a88f-bda8e27e27e6
     Parts:
+        -   UIElement: !StackPanel
+                Id: 24c44ba4-a86e-4133-aa77-07907bc298f4
+                DependencyProperties:
+                    e0b5050f45a78e648489bbbadd45bea8~Canvas.UseAbsolutePositionPropertyKey: false
+                    72b781adc38ca6cb344257d025500240~Canvas.RelativePositionPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                    6fecdcdf9ff3ca089537281a9eeb6c2e~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                    6658c4c58540b5636468fe1055ec9d42~Canvas.RelativeSizePropertyKey: {X: NaN, Y: NaN, Z: NaN}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: ConfigMenu
+                Children:
+                    a724a272265ade7b6a91d9c18e176431: !TextBlock ref!! 4d6d2ad2-09b1-45d8-b9e0-5b76bdae1691
+                    dd54205857b2e891d4290f62b2dda794: !TextBlock ref!! 4d15e09a-47d5-4eca-a2cd-0cf423d2da5c
+                    7a1597444d16bacb893051493a0e803b: !TextBlock ref!! a38a1e48-c155-439c-81e0-602f73073f59
+                    29f6eb59e847169f153b9410967301a0: !TextBlock ref!! 50f49724-d950-4e77-9d39-ce861d1a88d4
+        -   UIElement: !TextBlock
+                Id: 4d15e09a-47d5-4eca-a2cd-0cf423d2da5c
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {Bottom: 20.0}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: Sound
+                Text: '< Sound : X >'
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 50.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+                TextAlignment: Center
+        -   UIElement: !TextBlock
+                Id: 4d6d2ad2-09b1-45d8-b9e0-5b76bdae1691
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {Bottom: 20.0}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: PlayerNumber
+                Text: < X Player >
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 50.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+                TextAlignment: Center
+        -   UIElement: !TextBlock
+                Id: 50f49724-d950-4e77-9d39-ce861d1a88d4
+                DependencyProperties: {}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {}
+                Name: Quit
+                Text: Quit
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 50.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+                TextAlignment: Center
         -   UIElement: !TextBlock
                 Id: 5c6f23f9-da58-4bb8-abcb-a9415d0dd889
                 DependencyProperties:
@@ -40,6 +97,39 @@ Hierarchy:
                 Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
                 TextSize: 50.0
                 TextColor: {R: 240, G: 240, B: 240, A: 255}
+        -   UIElement: !TextBlock
+                Id: a38a1e48-c155-439c-81e0-602f73073f59
+                DependencyProperties:
+                    6e730cc2e9125c5564c2c79186624f43~Canvas.UseAbsolutePositionPropertyKey: false
+                    b68467a0982d230ecb9c4778f0653525~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                    4357b97130dc1667474b453724248d32~Canvas.RelativePositionPropertyKey: {X: 0.5, Y: 0.6, Z: 0.0}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Margin: {Bottom: 20.0}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: PressText2
+                Text: start game
+                Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
+                TextSize: 50.0
+                TextColor: {R: 240, G: 240, B: 240, A: 255}
+                TextAlignment: Center
+        -   UIElement: !Canvas
+                Id: b0a05d18-97c7-4553-b88f-04721ef29419
+                DependencyProperties:
+                    0497830a77b9ae238fb70b32408d853f~Canvas.UseAbsolutePositionPropertyKey: false
+                    90b5582f1623c2681a16b4df2504f283~Canvas.RelativePositionPropertyKey: {X: 0.5, Y: 0.65, Z: 0.0}
+                    4f3159d6d689aa1fac3563a3f430d93e~Canvas.PinOriginPropertyKey: {X: 0.5, Y: 0.5, Z: 0.0}
+                    39090f699c58d6abe00c3aa193f75155~Canvas.RelativeSizePropertyKey: {X: NaN, Y: 0.5, Z: NaN}
+                BackgroundColor: {R: 0, G: 0, B: 0, A: 0}
+                Visibility: Hidden
+                Margin: {}
+                MaximumWidth: 3.4028235E+38
+                MaximumHeight: 3.4028235E+38
+                MaximumDepth: 3.4028235E+38
+                Name: Config
+                Children:
+                    9e32d330168f2a7f844895ada2a53454: !StackPanel ref!! 24c44ba4-a86e-4133-aa77-07907bc298f4
         -   UIElement: !Canvas
                 Id: dc9a63d6-0a01-4bd1-a88f-bda8e27e27e6
                 DependencyProperties: {}
@@ -52,3 +142,4 @@ Hierarchy:
                 Children:
                     65cbde34eb85364ffb16c139ceb1b221: !TextBlock ref!! 5c6f23f9-da58-4bb8-abcb-a9415d0dd889
                     79413cb2532b2f610e8d5d23f55ab3dd: !TextBlock ref!! 6bcdfd63-7f8b-4f3c-9a62-a62784e711de
+                    e5ba6c723c49425f0654e3130bb24f8b: !Canvas ref!! b0a05d18-97c7-4553-b88f-04721ef29419

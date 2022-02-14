@@ -214,8 +214,8 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                     60bade7a53f63ff0a2a72f0fe3e3d672: !StridePong.BallCollisionCheck,StridePong
                         Id: 76440520-4d3e-4039-a124-186b4765917c
-                        TriggerLeft: ref!! b617ac57-97df-42b2-865a-797a7aea011a
                         TriggerRight: ref!! 4fac6620-899f-484e-88b9-fad886b86392
+                        TriggerLeft: ref!! b617ac57-97df-42b2-865a-797a7aea011a
                         PaddleLeft: ref!! 50db6d98-ae3d-4bec-bbfc-fa3d68efae9d
                         PaddleRight: ref!! 56df9bc4-4996-4219-81ed-fa64d5b9907f
                         Top: ref!! 4a8edc80-9c8c-484d-b97c-b7b9f239646b
