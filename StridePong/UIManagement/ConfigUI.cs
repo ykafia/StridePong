@@ -78,10 +78,13 @@ namespace StridePong
             {
                 if(Input.IsKeyPressed(Keys.Enter))
                 {
-                    UIManagerScript.ConfigGameEvent.Broadcast(
-                            new GameConfig{
-                                nbPlayer = GameType.Game2P, 
-                                scoreMax = scoreMax}
+                    UIManagerScript.UIEvents.Broadcast(
+                            new ConfigEventData(
+                                new GameConfig{
+                                    nbPlayer = gameType, 
+                                    scoreMax = scoreMax
+                                }
+                            )
                         );
                 }
             }

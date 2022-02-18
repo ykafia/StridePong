@@ -23,10 +23,16 @@ namespace StridePong
         {
             if(Key == Keys.None){
                 if(Input.HasPressedKeys)
-                    UIManagerScript.ChangeUI.Broadcast(Action);
+                {
+                    UIManagerScript.UIEvents.Broadcast(new EventData(Action));
+                    Entity.Remove(this);
+                }
             }
             else if(Input.IsKeyPressed(Key))
-                UIManagerScript.ChangeUI.Broadcast(Action);
+            {
+                UIManagerScript.UIEvents.Broadcast(new EventData(Action));
+                Entity.Remove(this);
+            }
         }
     }
 }

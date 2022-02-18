@@ -71,9 +71,9 @@ namespace StridePong
                     TLeft.Text = "P2 " + scoreLeft.ToString();
                 }
 
-                if (scoreLeft >= 3 || scoreRight >= 3)
+                if (scoreLeft >= ScoreMax || scoreRight >= ScoreMax)
                 {
-                    UIManagerScript.WinGameEvent.Broadcast(scoreLeft >= 3 ? Paddle.Left : Paddle.Right);
+                    UIManagerScript.UIEvents.Broadcast(scoreLeft >= ScoreMax ? new WinEventData(Paddle.Left) : new WinEventData(Paddle.Right));
                     scoreRight = 0;
                     scoreLeft = 0;
                     TRight.Text = "P1 " + scoreRight.ToString();

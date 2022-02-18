@@ -10,6 +10,7 @@ using Stride.Engine.Events;
 using Stride.Core;
 using Stateless;
 using Stride.UI.Controls;
+using System.Threading;
 
 namespace StridePong
 {
@@ -17,9 +18,7 @@ namespace StridePong
     {
         
         #region static UI events
-        public static EventKey<GameActions> ChangeUI = new("Global");
-        public static EventKey<GameConfig> ConfigGameEvent = new("Global");
-        public static EventKey<Paddle> WinGameEvent = new("Global");
+        public static EventKey<EventDataBase> UIEvents = new("Global");
 
         #endregion
 
@@ -37,9 +36,8 @@ namespace StridePong
         #endregion
         
         #region EventReceivers
-        private readonly EventReceiver<GameActions> uiReceiver = new(ChangeUI);
-        private readonly EventReceiver<Paddle> winReceiver = new(WinGameEvent);
-        private readonly EventReceiver<GameConfig> configReceiver = new(ConfigGameEvent);
+        private readonly EventReceiver<EventDataBase> eventReceiver = new(UIEvents);
+        
         #endregion
 
         #region StateMachine attributes
@@ -64,6 +62,8 @@ namespace StridePong
         private PressButtonEvent PressStart = new PressButtonEvent{Key = Keys.Space, Action = GameActions.ShowConfig};
         private PressButtonEvent PressReturn = new PressButtonEvent{Key = Keys.Space, Action = GameActions.BackToMenu};
         private PressButtonEvent PressAnyReturn = new PressButtonEvent{Key = Keys.None, Action = GameActions.BackToMenu};
+        CancellationTokenSource tokenSource = new CancellationTokenSource();  
+        
         #endregion
 
 
@@ -73,29 +73,16 @@ namespace StridePong
             Configure();
             while(Game.IsRunning)
             {
-                var (win,config,ui) = 
-                    (winReceiver.ReceiveAsync(),
-                    configReceiver.ReceiveAsync(),
-                    uiReceiver.ReceiveAsync());
+                var data = await eventReceiver.ReceiveAsync();
+                if(data is WinEventData win)
+                    UIStates.Fire(winParams,win.Winner);
+
+                else if(data is ConfigEventData conf)
+                    UIStates.Fire(configParams,conf.Config);
+
+                else if(data is EventData ev)
+                    UIStates.Fire(ev.Action);
                 
-                Task completed = await Task.WhenAny(
-                    win,config,ui
-                );
-                if(completed == win)
-                {
-                    var res = win.Result;
-                    UIStates.Fire(winParams,res);
-                }
-                else if(completed == config)
-                {
-                    var res = config.Result;
-                    UIStates.Fire(configParams,res);
-                }
-                else if(completed == ui)
-                {
-                    var res = ui.Result;
-                    UIStates.Fire(res);
-                }
                 
                 
             }
@@ -139,7 +126,6 @@ namespace StridePong
 
         private void StartUICode()
         {
-            Entity.Remove(PressStart);
             MenuPage.RootElement.FindName("Config").Visibility = Stride.UI.Visibility.Visible;
             MenuPage.RootElement.FindName("PressText").Visibility = Stride.UI.Visibility.Hidden;
             Entity.Add(new ConfigUI());
@@ -148,7 +134,6 @@ namespace StridePong
         private void MenuUICode()
         {
             UI.Page = MenuPage;
-            Entity.Remove(PressAnyReturn);
             Entity.Add(PressStart);
         }
         private void BeginGame(GameConfig config)
