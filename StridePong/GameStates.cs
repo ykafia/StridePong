@@ -1,20 +1,29 @@
 namespace StridePong
 {
+    public struct GameConfig
+    {
+        public GameType nbPlayer;
+        public int scoreMax;
+    }
+
+    public enum GameType
+    {
+        Game1P,
+        Game2P
+    }
+
     public enum GameStates 
     {
         Menu,
         Config,
         InGame,
-        WinLeft,
-        WinRight
+        Win
     }
     public enum GameActions 
     {
         ShowConfig,
-        StartGame2P,
-        StartGame1P,
-        EndGameLeft,
-        EndGameRight,
+        StartGame,
+        EndGame,
         BackToMenu
     }
     public enum Border

@@ -18,12 +18,6 @@ namespace StridePong
         
         [DataMember(20)]
         public float Speed = 4f;
-        
-        Vector3 Velocity => Ball.Get<InitialBallVelocity>().Velocity;
-        public override void Start()
-        {
-            var x = 1;
-        }
  
         public override void Update()
         {
@@ -31,10 +25,10 @@ namespace StridePong
             var ballPos = Ball.Transform.Position;
 
             var delta = ballPos - pos;
- 
-            if(delta.Y > 0 && Entity.Transform.Position.Y < 4)
+
+            if(delta.Y > 0.2 && Entity.Transform.Position.Y < 4)
                 Entity.Transform.Position.Y += Speed * (float)Game.UpdateTime.Elapsed.TotalSeconds;
-            else if(delta.Y < 0 && Entity.Transform.Position.Y > -4)
+            else if(delta.Y < -0.2 && Entity.Transform.Position.Y > -4)
                 Entity.Transform.Position.Y -= Speed * (float)Game.UpdateTime.Elapsed.TotalSeconds;
         }
     }

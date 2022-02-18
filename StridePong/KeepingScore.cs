@@ -9,10 +9,11 @@ using Stride.Engine;
 using Stride.Engine.Events;
 using Stride.UI;
 using Stride.UI.Controls;
+using Stride.Core;
 
 namespace StridePong
 {
-    public enum Paddle 
+    public enum Paddle
     {
         Left,
         Right
@@ -26,55 +27,59 @@ namespace StridePong
     public class KeepingScore : AsyncScript
     {
         // Declared public member fields and properties will show in the game studio
-        
-        public static EventKey<PlayerScore> PointTo = new ("General");
+
+        public static EventKey<PlayerScore> PointTo = new("General");
         private EventReceiver<PlayerScore> NewPoint = new(PointTo);
+        [DataMember(10)]
         public Entity PaddleRight;
+        [DataMember(20)]
         public Entity PaddleLeft;
+        [DataMember(30)]
+        public int ScoreMax;
 
 
         private TextBlock TRight => Entity.Get<UIComponent>().Page.RootElement.FindName("ScoreRight") as TextBlock;
-        private TextBlock TLeft => Entity.Get<UIComponent>().Page.RootElement.FindName("ScoreLeft") as TextBlock; 
+        private TextBlock TLeft => Entity.Get<UIComponent>().Page.RootElement.FindName("ScoreLeft") as TextBlock;
         private uint scoreLeft = 0;
         private uint scoreRight = 0;
 
         public override async Task Execute()
         {
-            
-            TRight.Text = "0";
-            TLeft.Text = "0";
-            while(Game.IsRunning)
+
+            TRight.Text = "P1 0";
+            TLeft.Text = "P2 0";
+            while (Game.IsRunning)
             {
-                
+
                 // Do stuff every new frame
                 var paddle = await NewPoint.ReceiveAsync();
-                if(paddle == PlayerScore.OneToLeft)
+                if (paddle == PlayerScore.OneToLeft)
                 {
-                    scoreLeft+=1;
-                    TLeft.Text = scoreLeft.ToString();
+                    scoreLeft += 1;
+                    TLeft.Text = "P2 " + scoreLeft.ToString();
                 }
-                else if(paddle == PlayerScore.OneToRight)
+                else if (paddle == PlayerScore.OneToRight)
                 {
-                    scoreRight+=1;
-                    TRight.Text = scoreRight.ToString();
+                    scoreRight += 1;
+                    TRight.Text = "P2 " + scoreRight.ToString();
                 }
-                else if(paddle == PlayerScore.Reset)
+                else if (paddle == PlayerScore.Reset)
                 {
                     scoreRight = 0;
                     scoreLeft = 0;
-                    TRight.Text = scoreRight.ToString();
-                    TLeft.Text = scoreLeft.ToString();
+                    TRight.Text = "P1 " + scoreRight.ToString();
+                    TLeft.Text = "P2 " + scoreLeft.ToString();
                 }
 
-                if(scoreLeft >= 3 || scoreRight >= 3 )
+                if (scoreLeft >= 3 || scoreRight >= 3)
                 {
-                    UIManagerScript.ChangeUI.Broadcast(scoreLeft>=3?GameActions.EndGameLeft:GameActions.EndGameRight);
+                    UIManagerScript.WinGameEvent.Broadcast(scoreLeft >= 3 ? Paddle.Left : Paddle.Right);
                     scoreRight = 0;
                     scoreLeft = 0;
-                    TRight.Text = scoreRight.ToString();
-                    TLeft.Text = scoreLeft.ToString();
+                    TRight.Text = "P1 " + scoreRight.ToString();
+                    TLeft.Text = "P2 " + scoreLeft.ToString();
                 }
             }
-        }   
+        }
     }
 }

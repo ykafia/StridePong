@@ -15,10 +15,11 @@ namespace StridePong
         // Declared public member fields and properties will show in the game studio
 
         private UIPage Page => Entity.Get<UIComponent>().Page;
-        bool is2Player = false;
+        GameType gameType = GameType.Game1P;
         private TextBlock PlayerNum => Page.RootElement.FindName("ConfigMenu").FindName("PlayerNumber") as TextBlock;
         bool isSoundOn = true;
-        private TextBlock SoundConfig => Page.RootElement.FindName("ConfigMenu").FindName("Sound") as TextBlock;
+        int scoreMax = 3;
+        private TextBlock ScoreMaxConfig => Page.RootElement.FindName("ConfigMenu").FindName("ScoreMax") as TextBlock;
         private TextBlock StartButton => Page.RootElement.FindName("ConfigMenu").FindName("PressText2") as TextBlock;
         private TextBlock QuitButton => Page.RootElement.FindName("ConfigMenu").FindName("Quit") as TextBlock;
 
@@ -30,11 +31,11 @@ namespace StridePong
         public override void Start()
         {
             selection.Add(PlayerNum);
-            selection.Add(SoundConfig);
+            selection.Add(ScoreMaxConfig);
             selection.Add(StartButton);
             selection.Add(QuitButton);
-            PlayerNum.Text = is2Player ? "< 2 Players" : "  1 Player   >";
-            SoundConfig.Text = isSoundOn ? "  Sound : On  >" : "< Sound : Off  ";
+            PlayerNum.Text = gameType == GameType.Game2P ? "< 2 Players" : "  1 Player   >";
+            // ScoreMaxConfig.Text = isSoundOn ? "  Sound : On  >" : "< Sound : Off  ";
         }
 
         public override void Update()
@@ -50,34 +51,39 @@ namespace StridePong
 
             if(selected == 0)
             {
-                if(Input.IsKeyPressed(Keys.Right) && !is2Player)
+                if(Input.IsKeyPressed(Keys.Right) && gameType == GameType.Game1P)
                 {
-                    is2Player = true;
+                    gameType = GameType.Game2P;
                     PlayerNum.Text = "< 2 Players  ";
                 }
-                if(Input.IsKeyPressed(Keys.Left) && is2Player)
+                if(Input.IsKeyPressed(Keys.Left) && gameType == GameType.Game2P)
                 {
-                    is2Player = false;
+                    gameType = GameType.Game1P;
                     PlayerNum.Text = "  1 Player   >";
                 }
             }
             if(selected == 1)
             {
-                if(Input.IsKeyPressed(Keys.Right) && isSoundOn)
+                if(Input.IsKeyPressed(Keys.Right) && scoreMax < 9)
                 {
-                    isSoundOn = false;
-                    SoundConfig.Text = "< Sound : Off  ";
+                    scoreMax += 3;
                 }
-                if(Input.IsKeyPressed(Keys.Left) && !isSoundOn)
+                if(Input.IsKeyPressed(Keys.Left) && scoreMax > 3)
                 {
-                    isSoundOn = true;
-                    SoundConfig.Text = "  Sound : On  >";
+                    scoreMax -= 3;
                 }
+                ScoreMaxConfig.Text = $"Score max : {(scoreMax > 3 ? '<' : ' ')} {scoreMax} {(scoreMax < 9 ? '>' : ' ')}";
             }
             if(selected == 2)
             {
                 if(Input.IsKeyPressed(Keys.Enter))
-                    UIManagerScript.ChangeUI.Broadcast(is2Player ? GameActions.StartGame2P : GameActions.StartGame1P);
+                {
+                    UIManagerScript.ConfigGameEvent.Broadcast(
+                            new GameConfig{
+                                nbPlayer = GameType.Game2P, 
+                                scoreMax = scoreMax}
+                        );
+                }
             }
             if(selected == 3)
             {

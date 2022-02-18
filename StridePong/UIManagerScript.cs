@@ -15,8 +15,15 @@ namespace StridePong
 {
     public class UIManagerScript : AsyncScript
     {
-        // Declared public member fields and properties will show in the game studio
+        
+        #region static UI events
         public static EventKey<GameActions> ChangeUI = new("Global");
+        public static EventKey<GameConfig> ConfigGameEvent = new("Global");
+        public static EventKey<Paddle> WinGameEvent = new("Global");
+
+        #endregion
+
+        #region Data Members
 
         [DataMember(10)]
         public UIPage MenuPage;
@@ -26,14 +33,25 @@ namespace StridePong
         public UIPage InGamePage;
         [DataMember(40)]
         public UIPage WinPage;
+
+        #endregion
         
+        #region EventReceivers
+        private readonly EventReceiver<GameActions> uiReceiver = new(ChangeUI);
+        private readonly EventReceiver<Paddle> winReceiver = new(WinGameEvent);
+        private readonly EventReceiver<GameConfig> configReceiver = new(ConfigGameEvent);
+        #endregion
 
-        [DataMemberIgnore]
-        private EventReceiver<GameActions> receiver = new(ChangeUI); 
-
+        #region StateMachine attributes
         [DataMemberIgnore]
         public StateMachine<GameStates,GameActions> UIStates;
 
+        private StateMachine<GameStates,GameActions>.TriggerWithParameters<Paddle> winParams;
+        private StateMachine<GameStates,GameActions>.TriggerWithParameters<GameConfig> configParams;
+        #endregion
+
+        #region Utility fields
+        
         [DataMemberIgnore]
         private UIComponent UI => Entity.Get<UIComponent>();
 
@@ -43,9 +61,11 @@ namespace StridePong
         private Entity GameEntity;
         private Entity BallEntity;
 
-        PressButtonEvent PressStart = new PressButtonEvent{Key = Keys.Space, Action = GameActions.ShowConfig};
-        PressButtonEvent PressReturn = new PressButtonEvent{Key = Keys.Space, Action = GameActions.BackToMenu};
-        PressButtonEvent PressAnyReturn = new PressButtonEvent{Key = Keys.None, Action = GameActions.BackToMenu};
+        private PressButtonEvent PressStart = new PressButtonEvent{Key = Keys.Space, Action = GameActions.ShowConfig};
+        private PressButtonEvent PressReturn = new PressButtonEvent{Key = Keys.Space, Action = GameActions.BackToMenu};
+        private PressButtonEvent PressAnyReturn = new PressButtonEvent{Key = Keys.None, Action = GameActions.BackToMenu};
+        #endregion
+
 
         public override async Task Execute()
         {
@@ -53,8 +73,31 @@ namespace StridePong
             Configure();
             while(Game.IsRunning)
             {
-                var action = await receiver.ReceiveAsync();
-                UIStates.Fire(action);
+                var (win,config,ui) = 
+                    (winReceiver.ReceiveAsync(),
+                    configReceiver.ReceiveAsync(),
+                    uiReceiver.ReceiveAsync());
+                
+                Task completed = await Task.WhenAny(
+                    win,config,ui
+                );
+                if(completed == win)
+                {
+                    var res = win.Result;
+                    UIStates.Fire(winParams,res);
+                }
+                else if(completed == config)
+                {
+                    var res = config.Result;
+                    UIStates.Fire(configParams,res);
+                }
+                else if(completed == ui)
+                {
+                    var res = ui.Result;
+                    UIStates.Fire(res);
+                }
+                
+                
             }
         }
 
@@ -70,29 +113,27 @@ namespace StridePong
             BallEntity = GameEntity.GetChildren().First(x => x.Get<BallCollisionCheck>() != null);
             UIStates = new StateMachine<GameStates, GameActions>(GameStates.Menu);
             Entity.Add(PressStart);
+
+
+            configParams = UIStates.SetTriggerParameters<GameConfig>(GameActions.StartGame);
+            winParams = UIStates.SetTriggerParameters<Paddle>(GameActions.EndGame);
+
+
             UIStates
                 .Configure(GameStates.Menu)
                 .OnEntry(t => MenuUICode())
                 .Permit(GameActions.ShowConfig,GameStates.Config);
-                // .Permit(GameActions.StartGame, GameStates.InGame);
             UIStates
                 .Configure(GameStates.Config)
                 .OnEntry(t => StartUICode())
-                .Permit(GameActions.StartGame1P,GameStates.InGame)
-                .Permit(GameActions.StartGame2P,GameStates.InGame);
-                
+                .Permit(GameActions.StartGame,GameStates.InGame);
             UIStates
                 .Configure(GameStates.InGame)
-                .OnEntry(t => BeginGame(t))
-                .Permit(GameActions.EndGameLeft,GameStates.WinLeft)
-                .Permit(GameActions.EndGameRight,GameStates.WinRight);
+                .OnEntryFrom(configParams, config => BeginGame(config))
+                .Permit(GameActions.EndGame,GameStates.Win);
             UIStates
-                .Configure(GameStates.WinLeft)
-                .OnEntry(t => EndGame(1))
-                .Permit(GameActions.BackToMenu,GameStates.Menu);
-            UIStates
-                .Configure(GameStates.WinRight)
-                .OnEntry(t => EndGame(2))
+                .Configure(GameStates.Win)
+                .OnEntryFrom(winParams, winner => EndGame(winner))
                 .Permit(GameActions.BackToMenu,GameStates.Menu);
         }
 
@@ -110,36 +151,28 @@ namespace StridePong
             Entity.Remove(PressAnyReturn);
             Entity.Add(PressStart);
         }
-        private void BeginGame()
+        private void BeginGame(GameConfig config)
         {
-            MenuPage.RootElement.FindName("Config").Visibility = Stride.UI.Visibility.Hidden;
-            MenuPage.RootElement.FindName("PressText").Visibility = Stride.UI.Visibility.Visible;
-            Entity.Remove<ConfigUI>();
-            UI.Page = InGamePage;
-            SceneSystem.SceneInstance.RootScene.Entities.Add(GameEntity);
-        }
-        private void BeginGame(StateMachine<GameStates,GameActions>.Transition t)
-        {
-            switch(t.Trigger)
+            if(config.nbPlayer == GameType.Game1P)
             {
-                case GameActions.StartGame1P :
-                    paddleLeft.Remove<MovePaddle>();
-                    if(paddleLeft.Get<LeftPaddleAI>() == null)
-                        paddleLeft.Add(new LeftPaddleAI{Ball = BallEntity});
-                    break;
-                case GameActions.StartGame2P :
-                    paddleLeft.Remove<LeftPaddleAI>();
-                    if(paddleLeft.Get<MovePaddle>() == null)
-                        paddleLeft.Add(new MovePaddle{Down = Keys.S, Up = Keys.Z, Speed = 5});
-                    break;
+                paddleLeft.Remove<MovePaddle>();
+                if(paddleLeft.Get<LeftPaddleAI>() == null)
+                    paddleLeft.Add(new LeftPaddleAI{Ball = BallEntity});
             }
+            else if(config.nbPlayer == GameType.Game1P)
+            {
+                paddleLeft.Remove<LeftPaddleAI>();
+                if(paddleLeft.Get<MovePaddle>() == null)
+                    paddleLeft.Add(new MovePaddle{Down = Keys.S, Up = Keys.Z, Speed = 5});
+            }
+            Entity.Get<KeepingScore>().ScoreMax = config.scoreMax;
             MenuPage.RootElement.FindName("Config").Visibility = Stride.UI.Visibility.Hidden;
             MenuPage.RootElement.FindName("PressText").Visibility = Stride.UI.Visibility.Visible;
             Entity.Remove<ConfigUI>();
             UI.Page = InGamePage;
             SceneSystem.SceneInstance.RootScene.Entities.Add(GameEntity);
         }
-        private void EndGame(int player)
+        private void EndGame(Paddle player)
         {
             Entity.Add(PressAnyReturn);
             UI.Page = WinPage;

@@ -34,8 +34,8 @@ Hierarchy:
                 MaximumWidth: 3.4028235E+38
                 MaximumHeight: 3.4028235E+38
                 MaximumDepth: 3.4028235E+38
-                Name: Sound
-                Text: '< Sound : X >'
+                Name: ScoreMax
+                Text: 'Score max : < 3 >'
                 Font: dafb8569-5bda-404a-8b67-51c05670bfcc:NesFont
                 TextSize: 50.0
                 TextColor: {R: 240, G: 240, B: 240, A: 255}
