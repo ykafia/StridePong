@@ -12,7 +12,7 @@ using Stride.Core;
 namespace StridePong
 {
     [DataContract]
-    public class InitialBallVelocity : SyncScript
+    public class BallVelocity : SyncScript
     {
         // Declared public member fields and properties will show in the game studio
         public float Speed {get;set;} = 10;

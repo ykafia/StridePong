@@ -32,7 +32,7 @@ namespace StridePong
 
         public override async Task Execute()
         {
-            Entity.GetOrCreate<InitialBallVelocity>().Start();      
+            Entity.GetOrCreate<BallVelocity>().Start();      
                   
             var body = Entity.Get<RigidbodyComponent>();
             while(Game.IsRunning)
@@ -41,37 +41,37 @@ namespace StridePong
                 var collision = await body.NewCollision();
                 if(collision.ColliderA == TriggerRight || collision.ColliderB == TriggerRight)
                 {
-                    Entity.Get<InitialBallVelocity>().Start();
+                    Entity.Get<BallVelocity>().Start();
                     KeepingScore.PointTo.Broadcast(PlayerScore.OneToLeft);
                 } 
                 else if(collision.ColliderA == TriggerLeft || collision.ColliderB == TriggerLeft)
                 {
-                    Entity.Get<InitialBallVelocity>().Start();
+                    Entity.Get<BallVelocity>().Start();
                     KeepingScore.PointTo.Broadcast(PlayerScore.OneToRight);
                 }
                 else if(collision.ColliderA == Left || collision.ColliderB == Left)
                 {
                     var deltaPos = PaddleLeft.Transform.Position.Y - Entity.Transform.Position.Y;
-                    Entity.Get<InitialBallVelocity>().Reflect(Border.Left,deltaPos);
+                    Entity.Get<BallVelocity>().Reflect(Border.Left,deltaPos);
                 }
                 else if(collision.ColliderA == Right || collision.ColliderB == Right)
                 {
                     var deltaPos = PaddleRight.Transform.Position.Y - Entity.Transform.Position.Y;
-                    Entity.Get<InitialBallVelocity>().Reflect(Border.Right,deltaPos);
+                    Entity.Get<BallVelocity>().Reflect(Border.Right,deltaPos);
                 }
                 else if(collision.ColliderA == TopB || collision.ColliderB == TopB)
                 {
                     // var deltaPos = Entity.Transform.Position.Y - Top.Transform.WorldMatrix.TranslationVector.Y;
-                    Entity.Get<InitialBallVelocity>().Reflect(Border.Top,0);
+                    Entity.Get<BallVelocity>().Reflect(Border.Top,0);
                 }
                 else if(collision.ColliderA == BottomB || collision.ColliderB == BottomB)
                 {
                     // var deltaPos = Entity.Transform.Position.Y - Bottom.Transform.WorldMatrix.TranslationVector.Y;
-                    Entity.Get<InitialBallVelocity>().Reflect(Border.Down,0);
+                    Entity.Get<BallVelocity>().Reflect(Border.Down,0);
                 }
                 
             }
-            void StartMoving() => Entity.Get<InitialBallVelocity>().Start();
+            void StartMoving() => Entity.Get<BallVelocity>().Start();
 
         }
     }
