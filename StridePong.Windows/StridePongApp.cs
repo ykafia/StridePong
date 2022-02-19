@@ -8,6 +8,7 @@ namespace StridePong
         {
             using (var game = new Game())
             {
+                game.WindowCreated += (s,e) => {game.Window.IsMouseVisible = false; game.Window.IsFullscreen = true;}; 
                 game.Run();
             }
         }

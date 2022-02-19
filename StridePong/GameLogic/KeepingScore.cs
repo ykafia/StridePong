@@ -61,7 +61,7 @@ namespace StridePong
                 else if (paddle == PlayerScore.OneToRight)
                 {
                     scoreRight += 1;
-                    TRight.Text = "P2 " + scoreRight.ToString();
+                    TRight.Text = "P1 " + scoreRight.ToString();
                 }
                 else if (paddle == PlayerScore.Reset)
                 {
